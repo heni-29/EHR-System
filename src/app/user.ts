@@ -1,7 +1,7 @@
 export class User {
-    email:string | undefined;
-    password:string | undefined;
-    role:string | undefined;
+    email:string
+    password:string
+    role:string 
     constructor(){}
 
 
