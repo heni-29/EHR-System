@@ -19,6 +19,11 @@ export class LoginComponent {
       data => console.log("Response recieved"),
       error => console.log("Exception occured")
     )
+    this.user = {
+      email:'',
+      password:'',
+      role:'',
+    }
   }
   onLogin() {
     //debugger
