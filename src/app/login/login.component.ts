@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RegistrationService } from '../registration.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-login',
@@ -6,44 +8,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  signupUsers: any[] = [];
-  signupObj: any = {
-    userName: '',
-    email: '',
-    password: ''
-  };
-  loginObj: any = {
-    userName: '',
-    password: ''
-  };
-  constructor() { 
+  user = new User();
+  constructor(private _service : RegistrationService) { 
   }
 
   ngOnInit(): void {
-    const localData = localStorage.getItem('signupUsers');
-    if (localData != null) {
-      this.signupUsers = JSON.parse(localData)
-    }
-
   }
   onSignup() {
-    this.signupUsers.push(this.signupObj);
-    localStorage.setItem('signupUsers', JSON.stringify(this.signupUsers));
-    this.signupObj = {
-      userName: '',
-      email: '',
-      password: ''
-    }
+    this._service.SignUpUserRemote(this.user).subscribe(
+      data => console.log("Response recieved"),
+      error => console.log("Exception occured")
+    )
   }
   onLogin() {
     //debugger
-    const isUserExist = this.signupUsers.find(m => m.userName == this.loginObj.userName && m.password == this.loginObj.password);
-    if (isUserExist != undefined) {
-      alert('User Logged In Successfully');
-
-    } else {
-      alert('Please enter correct credentials');
-    }
+    
 
   }
 
