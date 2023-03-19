@@ -1,5 +1,26 @@
 <div class="container-fluid g-0">
     <app-header (sideNavToogled)="sideNavStatus = $event;"></app-header>
+    <br>
+
+
+    <form class="form-floating">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Medicine Name" aria-label="Medicine name">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Price (MRP)" aria-label="Price">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Strength" aria-label="strength">
+        </div>
+      </div>
+      <br>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+    <br>
 
     <table class="table MyTable">
         <thead>
