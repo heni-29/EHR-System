@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { PharmacyComponent } from './pharmacy/pharmacy.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     HomepageComponent,
     HeaderComponent,
     SidenavComponent,
+    PharmacyComponent,
   ],
   imports: [
     BrowserModule,
