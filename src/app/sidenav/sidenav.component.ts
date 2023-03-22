@@ -12,7 +12,7 @@ export class SidenavComponent {
       number: '1',
       name: 'Home',
       icon: 'fa-solid fa-house',
-      link: ''
+      link: '/home'
     },
     {
       number: '2',

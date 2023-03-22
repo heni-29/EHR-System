@@ -46,3 +46,27 @@ app-sidenav {
     left: 250px;
 
 }
+
+.patientdetails {
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    width: 500px;
+    justify-content: center;
+}
+
+.row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.col {
+    text-align: -webkit-center;
+}
+
+.btn {
+    margin-top: 30px;
+    width: 150px;
+}

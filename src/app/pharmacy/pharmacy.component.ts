@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class PharmacyComponent {
   displayStyle = "none";
-  sideNavStatus: boolean = false;
+  sideNavStatus: boolean = true;
 
   openPopup(){
     this.displayStyle= "block";

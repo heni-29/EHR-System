@@ -5,7 +5,98 @@
       <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}"></app-sidenav>
   
       <div class="display-area p-3" [ngClass]="{'display-area-shrink': sideNavStatus}">
-        <router-outlet></router-outlet>
+        <form class="form-floating">
+          <h3 class="patientdetails">Enter Patient Details</h3>
+          <div class="row">
+            <div class="col">
+              <div class="input-group">
+                <span class="input-group-text">Patient Name</span>
+                <input type="text" aria-label="Patient name" class="form-control">
+              </div> 
+            </div>
+            <div class="col">
+              <div class="input-group">
+                <span class="input-group-text">Gender</span>
+                <select class="form-select" aria-label="Select Gender">
+                  <option selected>Select Gender</option>
+                  <option value="1">Male</option>
+                  <option value="2">Female</option>
+                  <option value="3">Others</option>
+                </select>
+              </div> 
+            </div>         
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="input-group">
+                <span class="input-group-text">Date of Birth</span>
+                <input type="text" aria-label="dob" class="form-control">
+              </div> 
+            </div>
+            <div class="col">
+              <div class="input-group">
+                <span class="input-group-text">Age</span>
+                <input type="text" aria-label="age" class="form-control">
+              </div> 
+            </div>         
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="input-group">
+                <span class="input-group-text">Email</span>
+                <input type="text" aria-label="email" class="form-control">
+              </div> 
+            </div>
+            <div class="col">
+              <div class="input-group">
+                <span class="input-group-text">Phone Number</span>
+                <input type="text" aria-label="phone number" class="form-control">
+              </div> 
+            </div>         
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="input-group">
+                <span class="input-group-text">Status</span>
+                <select class="form-select" aria-label="Status">
+                  <option selected>Select Status</option>
+                  <option value="1">Married</option>
+                  <option value="2">Single</option>
+                  <option value="3">Divorced</option>
+                  <option value="4">Widowed</option>
+                </select>
+              </div> 
+            </div>
+            <div class="col">
+              <div class="input-group">
+                <span class="input-group-text">Work For</span>
+                <input type="text" aria-label="company name" class="form-control">
+              </div> 
+            </div>         
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="input-group">
+                <span class="input-group-text">Address</span>
+                <input type="text" aria-label="address" class="form-control">
+              </div> 
+            </div>
+            <div class="col">
+              <div class="input-group">
+                <span class="input-group-text">Symptoms</span>
+                <input type="text" aria-label="address" class="form-control">
+              </div> 
+            </div>                                     
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="input-group">
+                <button type="button" class="btn btn-primary">Submit</button>
+              </div> 
+            </div>                                   
+          </div>
+  
+        </form>
       </div>
     </main>
   </div>
