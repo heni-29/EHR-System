@@ -21,7 +21,7 @@
                 <td>{{data.billingDate*1000 | date}}</td>
                 <td>{{data.cost}}</td>
                 <td>{{data.status}}</td>
-                <div *ngIf="unpaid(data.status)"><td><button class="btn-btn primary">Confirm Payment</button></td></div>
+                <td *ngIf="unpaid(data.status)"><button class="btn-btn primary">Confirm Payment</button></td>
                 
             </tr>  
         </tbody>
