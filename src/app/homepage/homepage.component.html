@@ -11,17 +11,17 @@
             <div class="col">
               <div class="input-group">
                 <span class="input-group-text">Patient Name</span>
-                <input type="text" aria-label="Patient name" class="form-control">
+                <input type="text" aria-label="Patient name" name="p_name" class="form-control" [(ngModel)]="file.name">
               </div> 
             </div>
             <div class="col">
               <div class="input-group">
                 <span class="input-group-text">Gender</span>
-                <select class="form-select" aria-label="Select Gender">
-                  <option selected>Select Gender</option>
-                  <option value="1">Male</option>
-                  <option value="2">Female</option>
-                  <option value="3">Others</option>
+                <select class="form-select" aria-label="Select Gender" name="gender" [(ngModel)]="file.gender">
+                  
+                  <option selected value="male" >Male</option>
+                  <option value="female">Female</option>
+                  <option value="others">Others</option>
                 </select>
               </div> 
             </div>         
@@ -29,14 +29,18 @@
           <div class="row">
             <div class="col">
               <div class="input-group">
-                <span class="input-group-text">Date of Birth</span>
-                <input type="text" aria-label="dob" class="form-control">
+                <span class="input-group-text">Doctor</span>
+                <select class="form-select" aria-label="Select Gender " name="doctor" [(ngModel)]="file.doctor_name">
+                  <option selected value="jaynit" >jaynit</option>
+                  <option value="female">abc</option>
+                  <option value="others">abc</option>
+                </select>
               </div> 
             </div>
             <div class="col">
               <div class="input-group">
                 <span class="input-group-text">Age</span>
-                <input type="text" aria-label="age" class="form-control">
+                <input type="text" aria-label="age" name="age" class="form-control" [(ngModel)] = "file.age">
               </div> 
             </div>         
           </div>
@@ -50,27 +54,7 @@
             <div class="col">
               <div class="input-group">
                 <span class="input-group-text">Phone Number</span>
-                <input type="text" aria-label="phone number" class="form-control">
-              </div> 
-            </div>         
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="input-group">
-                <span class="input-group-text">Status</span>
-                <select class="form-select" aria-label="Status">
-                  <option selected>Select Status</option>
-                  <option value="1">Married</option>
-                  <option value="2">Single</option>
-                  <option value="3">Divorced</option>
-                  <option value="4">Widowed</option>
-                </select>
-              </div> 
-            </div>
-            <div class="col">
-              <div class="input-group">
-                <span class="input-group-text">Work For</span>
-                <input type="text" aria-label="company name" class="form-control">
+                <input type="text" aria-label="phone number" name="phone" class="form-control" [(ngModel)] = "file.phone_number">
               </div> 
             </div>         
           </div>
@@ -78,20 +62,20 @@
             <div class="col">
               <div class="input-group">
                 <span class="input-group-text">Address</span>
-                <input type="text" aria-label="address" class="form-control">
+                <input type="text" aria-label="address" class="form-control" name="address"  [(ngModel)]="file.address">
               </div> 
             </div>
             <div class="col">
               <div class="input-group">
                 <span class="input-group-text">Symptoms</span>
-                <input type="text" aria-label="address" class="form-control">
+                <input type="text" aria-label="address" class="form-control" name="remarks" [(ngModel)]="file.remarks">
               </div> 
             </div>                                     
           </div>
           <div class="row">
             <div class="col">
               <div class="input-group">
-                <button type="button" class="btn btn-primary">Submit</button>
+                <button type="button" (click)="createFile()" class="btn btn-primary">Submit</button>
               </div> 
             </div>                                   
           </div>

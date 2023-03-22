@@ -15,9 +15,9 @@
 			<div class="login">
 				<form>
 					<label for="chk" aria-hidden="true">Login</label>
-					<input type="text" name="userName" placeholder="User Name"> 
-					<input type="password" name="pswd" placeholder="Password">
-					<button routerLink="/home" (click)="onLogin()">Login</button>
+					<input type="text" name="userName" placeholder="User Name" [(ngModel)] = "user.email"> 
+					<input type="password" name="pswd" placeholder="Password" [(ngModel)] = "user.password">
+					<button (click)="onLogin()">Login</button>
 				</form>
 			</div>
 	</div>

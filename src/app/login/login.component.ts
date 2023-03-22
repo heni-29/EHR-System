@@ -9,6 +9,7 @@ import { User } from '../user';
 })
 export class LoginComponent {
   user = new User();
+  loginStatus:any;
   constructor(private _service : RegistrationService) { 
   }
 
@@ -26,7 +27,24 @@ export class LoginComponent {
     }
   }
   onLogin() {
-    //debugger
+    localStorage.setItem("user",this.user.email)
+    localStorage.setItem("password",this.user.password)
+    this._service.LoginUserRemote(this.user).subscribe(
+      data => {
+        if(data){
+          window.location.replace("http://localhost:4200/home")      
+        }
+      },
+      error => {
+        localStorage.clear();
+        alert("Invalid Username and Password")
+      }
+    )
+    this.user = {
+      email:'',
+      password:'',
+      role:'',
+    }
     
 
   }
