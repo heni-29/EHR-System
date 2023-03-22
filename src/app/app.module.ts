@@ -10,6 +10,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
+import { AccountsComponent } from './accounts/accounts.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PharmacyComponent } from './pharmacy/pharmacy.component';
     HeaderComponent,
     SidenavComponent,
     PharmacyComponent,
+    AccountsComponent,
   ],
   imports: [
     BrowserModule,

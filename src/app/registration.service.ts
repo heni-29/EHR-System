@@ -15,4 +15,8 @@ export class RegistrationService {
     return this._http.post("http://localhost:9000/ehr/api/users",user)
   }
 
+  public loadAccountsData():Observable<any>{
+    return this._http.get("http://localhost:9000/ehr/api/accounts")
+  }
+
 }
