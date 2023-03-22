@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { AccountsComponent } from './accounts/accounts.component';
+import { DoctorComponent } from './doctor/doctor.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AccountsComponent } from './accounts/accounts.component';
     SidenavComponent,
     PharmacyComponent,
     AccountsComponent,
+    DoctorComponent,
   ],
   imports: [
     BrowserModule,

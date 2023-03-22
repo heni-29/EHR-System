@@ -1,0 +1,119 @@
+<div class="container-fluid g-0">
+  <app-header (sideNavToogled)="sideNavStatus = $event;"></app-header>
+
+  <main>
+    <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}"></app-sidenav>
+
+    <div class="display-area p-3" [ngClass]="{'display-area-shrink': sideNavStatus}">
+      <div class="container-fluid g-0">
+        <form class="form-floating">
+          <div class="row">
+            <div class="col">
+                <h5 class="search">Search Patient</h5>
+              </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Patient Name" aria-label="Patient name">
+            </div>
+            <div class="col">
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+          </div>
+        </form>
+        <br>
+    
+        <table class="table MyTable">
+            <thead>
+              <tr>
+                <th scope="col">S.No.</th>
+                <th scope="col">Patient Id</th>
+                <th scope="col">Patient Name</th>
+                <th scope="col">Status</th>
+                <th>Open File</th>
+                <th> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>1234</td>
+                <td>Heni Prajapati</td>
+                <td>Checked</td>
+                <td><button class = "btn btn-outline-success"><span class="material-symbols-outlined">
+                    View
+                    </span></button></td>
+        
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>1324</td>
+                <td>Aparna Kholia</td>
+                <td>To be checked</td>
+                <td><button class = "btn btn-outline-success"><span class="material-symbols-outlined">
+                    View
+                    </span></button></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>2091</td>
+                <td>Ayaan Khan</td>
+                <td>Checked</td>
+                <td><button class = "btn btn-outline-success" ><span class="material-symbols-outlined">
+                    View
+                    </span></button></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>2078</td>
+                <td>Jaynit Patel</td>
+                <td>To be checked</td>
+                <td><button class = "btn btn-outline-success"><span class="material-symbols-outlined">
+                    View
+                    </span></button></td>
+              </tr>
+              
+            </tbody>
+          </table>
+        
+          <div class="modal" [ngStyle]="{'display':displayStyle}" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closePopup()"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                      <div class="col">
+                          <label class="form-label">Medicine name</label>
+                          <input class="form-control" type="text" >
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                        <label class="form-label">Price</label>
+                        <input class="form-control" type="text" >
+                    </div>
+                </div>
+    
+                <div class="row">
+                  <div class="col">
+                      <label class="form-label">Strength</label>
+                      <input class="form-control" type="text" >
+                  </div>
+              </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </main>
+</div>
+
+
+
+
