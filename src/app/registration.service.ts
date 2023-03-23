@@ -40,4 +40,12 @@ export class RegistrationService {
     return this._http.put("http://localhost:9000/ehr/api/drugs/"+id,drug)
   }
 
+  public getFilesByDoctor(doctor:string):Observable<any>{
+    return this._http.get("http://localhost:9000/ehr/api/files/doctor/"+doctor)  
+  }
+
+  public updateAccountStatus(id:any):Observable<any>{
+    return this._http.put("http://localhost:9000/ehr/api/accounts/"+id,Array<any>)
+  }
+
 }

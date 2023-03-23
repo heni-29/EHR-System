@@ -33,6 +33,16 @@ export class AccountsComponent {
       error => alert("server error")
     )
   }
+
+  updateStatus(id:any){
+    this._service.updateAccountStatus(id).subscribe(
+      data =>{
+        alert("Successfull")
+        this.loadData();
+      },
+      error => alert("server error")
+    )
+  }
   populateTable(){
     
   }

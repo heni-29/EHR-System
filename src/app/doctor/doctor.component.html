@@ -6,21 +6,6 @@
 
     <div class="display-area p-3" [ngClass]="{'display-area-shrink': sideNavStatus}">
       <div class="container-fluid g-0">
-        <form class="form-floating">
-          <div class="row">
-            <div class="col">
-                <h5 class="search">Search Patient</h5>
-              </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Patient Name" aria-label="Patient name">
-            </div>
-            <div class="col">
-              <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-          </div>
-        </form>
-        <br>
-    
         <table class="table MyTable">
             <thead>
               <tr>
@@ -33,43 +18,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>1234</td>
-                <td>Heni Prajapati</td>
-                <td>Checked</td>
-                <td><button class = "btn btn-outline-success"><span class="material-symbols-outlined">
-                    View
-                    </span></button></td>
-        
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>1324</td>
-                <td>Aparna Kholia</td>
-                <td>To be checked</td>
-                <td><button class = "btn btn-outline-success"><span class="material-symbols-outlined">
-                    View
-                    </span></button></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>2091</td>
-                <td>Ayaan Khan</td>
-                <td>Checked</td>
-                <td><button class = "btn btn-outline-success" ><span class="material-symbols-outlined">
-                    View
-                    </span></button></td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>2078</td>
-                <td>Jaynit Patel</td>
-                <td>To be checked</td>
-                <td><button class = "btn btn-outline-success"><span class="material-symbols-outlined">
-                    View
-                    </span></button></td>
-              </tr>
+              <tr *ngFor="let data of dataList; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{data.user_name}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.status}}</td>
+                <td><button class="btn btn-primary">View</button></td>
+            </tr>
               
             </tbody>
           </table>

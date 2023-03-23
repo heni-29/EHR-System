@@ -26,14 +26,17 @@ export class LoginComponent {
       role:'',
     }
   }
+  role:User;
   onLogin() {
     localStorage.setItem("user",this.user.email)
     localStorage.setItem("password",this.user.password)
     this._service.LoginUserRemote(this.user).subscribe(
       data => {
-        if(data){
-          window.location.replace("http://localhost:4200/home")      
-        }
+        console.log(data)
+        this.role=data
+        localStorage.setItem("role",this.role.role)
+        window.location.replace("http://localhost:4200/home")      
+        
       },
       error => {
         localStorage.clear();

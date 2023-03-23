@@ -8,7 +8,7 @@
             <th scope="col">S.No.</th>
             <th scope="col">Name</th>
             <th scope="col">Date</th>
-            <th scope="col">Cost</th>
+            <th scope="col">Amount</th>
             <th scope="col">status</th>
             <th scope="col">Actions</th>
           </tr>
@@ -21,8 +21,8 @@
                 <td>{{data.billingDate*1000 | date}}</td>
                 <td>{{data.cost}}</td>
                 <td>{{data.status}}</td>
-                <td *ngIf="unpaid(data.status)"><button class="btn-btn primary">Confirm Payment</button></td>
-                
+                <td *ngIf="unpaid(data.status);else elseBlock"><button (click)="updateStatus(i+1)" class="btn btn-primary">Confirm Payment</button></td>
+                <ng-template #elseBlock><td>Closed</td></ng-template>
             </tr>  
         </tbody>
       </table>
