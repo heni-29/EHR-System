@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { User } from './user';
 import { File } from './file';
-
+import { Pharmacy } from './pharmacy';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +26,18 @@ export class RegistrationService {
 
   public CreateFile(file:File):Observable<any>{
     return this._http.post("http://localhost:9000/ehr/api/files",file)
+  }
+
+  public loadPharmacyData():Observable<any>{
+    return this._http.get("http://localhost:9000/ehr/api/drugs")
+  }
+
+  public CreateDrug(drug:Pharmacy):Observable<any>{
+    return this._http.post("http://localhost:9000/ehr/api/drugs",drug)
+  }
+
+  public updateDrug(drug:Pharmacy,id:any):Observable<any>{
+    return this._http.put("http://localhost:9000/ehr/api/drugs/"+id,drug)
   }
 
 }

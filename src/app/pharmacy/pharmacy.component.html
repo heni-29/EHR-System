@@ -9,16 +9,19 @@
         <form class="form-floating">
           <div class="row">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Medicine Name" aria-label="Medicine name">
+              <input type="text" class="form-control" name="temp" [(ngModel)]="pharmacy.supplier" placeholder="Supplier Name" aria-label="Medicine name" >
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Price (MRP)" aria-label="Price">
+              <input type="text" class="form-control" name="temp1" [(ngModel)]="pharmacy.name" placeholder="Medicine Name" aria-label="Medicine name">
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Strength" aria-label="strength">
+              <input type="text" class="form-control" name="temp3" [(ngModel)]="pharmacy.dose" placeholder="Strength" aria-label="strength">
             </div>
             <div class="col">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <input type="text" class="form-control" name="temp2" [(ngModel)]="pharmacy.mrp" placeholder="Price (MRP)" aria-label="Price">
+            </div>
+            <div class="col">
+              <button type="submit" (click)="addDrug()" class="btn btn-primary">Submit</button>
             </div>
           </div>
         </form>
@@ -28,43 +31,23 @@
           <thead>
             <tr>
               <th scope="col">S.No.</th>
+              <th scope="col">Supplier</th>
               <th scope="col">Name</th>
-              <th scope="col">MRP</th>
               <th scope="col">Strength</th>
-              <th>Edit</th>
+              <th scope="col">MRP</th>  
+              <th scope="col">Actions</th>
               <th> </th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Paracip</td>
-              <td>10</td>
-              <td>100mg</td>
-              <td><button class = "btn btn-outline-success" (click)="openPopup()"><span class="material-symbols-outlined">
-                  edit
-                  </span></button></td>
-      
+            <tr *ngFor="let data of dataList; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{data.supplier}}</td>
+              <td>{{data.name}}</td>
+              <td>{{data.dose}}</td>
+              <td>{{data.mrp}}</td>
+              <td><button (click)="openPopup(i+1)" class="btn btn-primary">Edit</button></td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Calpol</td>
-              <td>20</td>
-              <td>500mg</td>
-              <td><button class = "btn btn-outline-success" (click)="openPopup()"><span class="material-symbols-outlined">
-                  edit
-                  </span></button></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Xanax</td>
-              <td>250</td>
-              <td>10mg</td>
-              <td><button class = "btn btn-outline-success" (click)="openPopup()"><span class="material-symbols-outlined">
-                  edit
-                  </span></button></td>
-            </tr>
-            
           </tbody>
         </table>
       
@@ -78,27 +61,32 @@
               <div class="modal-body">
                 <div class="row">
                     <div class="col">
-                        <label class="form-label">Medicine name</label>
-                        <input class="form-control" type="text" >
+                        <label class="form-label">Supplier Name</label>
+                        <input class="form-control" name="ok" type="text" [(ngModel)]="pharmacy.supplier">
                     </div>
                 </div>
                 <div class="row">
                   <div class="col">
-                      <label class="form-label">Price</label>
-                      <input class="form-control" type="text" >
+                      <label class="form-label">Medicine name</label>
+                      <input class="form-control" name="ok1" type="text" [(ngModel)]="pharmacy.name">
                   </div>
               </div>
-  
               <div class="row">
                 <div class="col">
                     <label class="form-label">Strength</label>
-                    <input class="form-control" type="text" >
+                    <input class="form-control" name="ok2" type="text" [(ngModel)]="pharmacy.dose">
                 </div>
             </div>
+                <div class="row">
+                  <div class="col">
+                      <label class="form-label">Price</label>
+                      <input class="form-control" name="ok3" type="text" [(ngModel)]="pharmacy.mrp">
+                  </div>
+                </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" (click)="closePopup()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button"(click)="updateDrug()" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
