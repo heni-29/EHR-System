@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -12,6 +12,9 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { DoctorComponent } from './doctor/doctor.component';
+import { DoctorViewDetailsComponent } from './doctor-view-details/doctor-view-details.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 
 @NgModule({
   declarations: [
@@ -23,14 +26,18 @@ import { DoctorComponent } from './doctor/doctor.component';
     PharmacyComponent,
     AccountsComponent,
     DoctorComponent,
+    DoctorViewDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
