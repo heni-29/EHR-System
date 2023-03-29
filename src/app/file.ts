@@ -1,4 +1,5 @@
 export class File {
+    id:bigint;
     address:string;
     age:bigint;
     doctor_name:string;

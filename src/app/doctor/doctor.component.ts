@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RegistrationService } from '../registration.service';
 import { File } from '../file';
 import { Pharmacy } from '../pharmacy';
@@ -35,6 +35,10 @@ export class DoctorComponent {
   }
   closePopup(){
     this.displayStyle = "none";
+  }
+
+  viewFile(id:any){
+    localStorage.setItem("file",id)
   }
 
 

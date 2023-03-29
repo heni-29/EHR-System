@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import { User } from './user';
 import { File } from './file';
 import { Pharmacy } from './pharmacy';
+import { Lab } from './Lab';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,14 @@ export class RegistrationService {
 
   public updateAccountStatus(id:any):Observable<any>{
     return this._http.put("http://localhost:9000/ehr/api/accounts/"+id,Array<any>)
+  }
+
+  public createLab(lab:Lab){
+    return this._http.post("http://localhost:9000/ehr/api/records",lab)
+  }
+
+  public getFileById(id:any):Observable<any>{
+    return this._http.get("http://localhost:9000/ehr/api/files/user/"+id)
   }
 
 }

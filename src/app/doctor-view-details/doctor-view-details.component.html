@@ -10,10 +10,10 @@
                 <div id="record_container" class="record_container">
                     <h3 class="title">CLINIC</h3>
                     <div class="col">
-                        Phone: +91 9898989898
+                        Phone: {{file.phone_number}}
                     </div>
                     <div class="col1">
-                        Email: info@gmail.com
+                        Name: {{file.name}}
                     </div>
             
                     <table class="table">
@@ -31,8 +31,7 @@
                                                 <label class="label" for="inputPassword6" class="label">Name:</label>
                                             </div>
                                             <div class="col-auto">
-                                                <label class="label" for="inputPassword6" class="col-form-label">Heni
-                                                    Prajapati</label>
+                                                <label class="label" for="inputPassword6" class="col-form-label">{{file.name}}</label>
                                             </div>
                                         </td>
                                     </div>
@@ -42,7 +41,7 @@
                                                 <label for="inputPassword6" class="label">Gender:</label>
                                             </div>
                                             <div class="col-auto">
-                                                <label for="inputPassword6" class="col-form-label">Female</label>
+                                                <label for="inputPassword6" class="col-form-label">{{file.gender}}</label>
                                             </div>
                                         </td>
                                     </div>
@@ -59,7 +58,7 @@
                                                 <label class="label" for="inputPassword6" class="label">Phone:</label>
                                             </div>
                                             <div class="col-auto">
-                                                <label class="label" for="inputPassword6" class="col-form-label">9090909090</label>
+                                                <label class="label" for="inputPassword6" class="col-form-label">{{file.phone_number}}</label>
                                             </div>
                                         </td>
                                     </div>
@@ -69,7 +68,7 @@
                                                 <label for="inputPassword6" class="label">Address:</label>
                                             </div>
                                             <div class="col-auto">
-                                                <label for="inputPassword6" class="col-form-label">abcd</label>
+                                                <label for="inputPassword6" class="col-form-label">{{file.address}}</label>
                                             </div>
                                         </td>
                                     </div>
@@ -86,7 +85,7 @@
                                                 <label for="inputPassword6" class="label">Age:</label>
                                             </div>
                                             <div class="col-auto">
-                                                <label for="inputPassword6">21</label>
+                                                <label for="inputPassword6">{{file.age}}</label>
                                             </div>
                                         </td>
                                     </div>
@@ -96,7 +95,7 @@
                                                 <label for="inputPassword6" class="label">Symptoms:</label>
                                             </div>
                                             <div class="col-auto">
-                                                <label for="inputPassword6" class="col-form-label">x, y, z</label>
+                                                <label for="inputPassword6" class="col-form-label">{{file.remarks}}</label>
                                             </div>
                                         </td>
                                     </div>
@@ -122,7 +121,7 @@
                         </tr>
                         <tr class="table_row">
             
-                            <button type="button" class="btn btn-primary">Send to Laboratory</button>
+                            <button (click)="createLab()" class="btn btn-primary">Send to Laboratory</button>
             
                         </tr>
             
