@@ -1,65 +1,101 @@
 <div class="container-fluid g-0">
-    <app-header (sideNavToogled)="sideNavStatus = $event;"></app-header>
-    <br>
+  <app-header (sideNavToogled)="sideNavStatus = $event;"></app-header>
 
-    <table class="table MyTable" id ="acc_table">
-        <thead>
-          <tr>
-            <th scope="col">S.No.</th>
-            <th scope="col">Name</th>
-            <th scope="col">Date</th>
-            <th scope="col">Amount</th>
-            <th scope="col">status</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        
-        <tbody>   
+  <main>
+    <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}"></app-sidenav>
+
+    <div class="display-area p-3" [ngClass]="{'display-area-shrink': sideNavStatus}">
+      <div class="container-fluid g-0">
+        <app-header (sideNavToogled)="sideNavStatus = $event;"></app-header>
+        <br>
+
+        <table class="table MyTable" id="acc_table">
+          <thead>
+            <tr>
+              <th scope="col">S.No.</th>
+              <th scope="col">Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Amount</th>
+              <th scope="col">status</th>
+              <th scope="col">Action</th>
+              <th scope="col">Receipt</th>
+            </tr>
+          </thead>
+
+          <!--<tbody>
+            <tr>
+              <td>1</td>
+              <td>heni</td>
+              <td>100</td>
+              <td>idk</td>
+              <td>okl</td>
+              <td><button (click)="updateStatus(1)"
+                  class="btn btn-primary">Confirm Payment</button></td>
+              <ng-template #elseBlock>
+                <td>Closed</td>
+              </ng-template>
+              <td><button routerLink='/receipt' class = "btn btn-outline-success"><span class="material-symbols-outlined">
+                View
+                </span></button></td>
+            </tr>
+          </tbody>-->
+        <tbody>
             <tr *ngFor="let data of accList; let i = index">
-                <td>{{i+1}}</td>
-                <td>{{data.name}}</td>
-                <td>{{data.billingDate*1000 | date}}</td>
-                <td>{{data.cost}}</td>
-                <td>{{data.status}}</td>
-                <td *ngIf="unpaid(data.status);else elseBlock"><button (click)="updateStatus(i+1)" class="btn btn-primary">Confirm Payment</button></td>
-                <ng-template #elseBlock><td>Closed</td></ng-template>
-            </tr>  
-        </tbody>
-      </table>
-    
-      <div class="modal" [ngStyle]="{'display':displayStyle}" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closePopup()"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                  <div class="col">
-                      <label class="form-label">Medicine name</label>
-                      <input class="form-control" type="text" >
-                  </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                    <label class="form-label">Price</label>
-                    <input class="form-control" type="text" >
-                </div>
-            </div>
+              <td>{{i+1}}</td>
+              <td>{{data.name}}</td>
+              <td>{{data.billingDate*1000 | date}}</td>
+              <td>{{data.cost}}</td>
+              <td>{{data.status}}</td>
+              <td *ngIf="unpaid(data.status);else elseBlock"><button (click)="updateStatus(i+1)"
+                  class="btn btn-primary">Confirm Payment</button></td>
+              <ng-template #elseBlock>
+                <td>Closed</td>
+              </ng-template>
+              <td><button routerLink='/receipt' class = "btn btn-outline-success"><span class="material-symbols-outlined">
+                View
+                </span></button></td>
+            </tr>
+          </tbody> 
+        </table>
 
-            <div class="row">
-              <div class="col">
-                  <label class="form-label">Strength</label>
-                  <input class="form-control" type="text" >
+        <div class="modal" [ngStyle]="{'display':displayStyle}" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                  (click)="closePopup()"></button>
               </div>
-          </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col">
+                    <label class="form-label">Medicine name</label>
+                    <input class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label class="form-label">Price</label>
+                    <input class="form-control" type="text">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <label class="form-label">Strength</label>
+                    <input class="form-control" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
+  </main>
+</div>

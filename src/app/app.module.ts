@@ -14,6 +14,8 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { DoctorViewDetailsComponent } from './doctor-view-details/doctor-view-details.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { PrescribeMedicinesComponent } from './prescribe-medicines/prescribe-medicines.component';
+import { ReceiptComponent } from './receipt/receipt.component';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     AccountsComponent,
     DoctorComponent,
     DoctorViewDetailsComponent,
+    PrescribeMedicinesComponent,
+    ReceiptComponent,
   ],
   imports: [
     BrowserModule,

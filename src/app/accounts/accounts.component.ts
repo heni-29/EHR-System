@@ -10,7 +10,7 @@ import * as $ from "jquery";
 })
 export class AccountsComponent {
   displayStyle = "none";
-  sideNavStatus: boolean = false;
+  sideNavStatus: boolean = true;
   accList: Array<Account> =[];
 
   unpaid(val:string){

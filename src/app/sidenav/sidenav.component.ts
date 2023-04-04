@@ -24,7 +24,7 @@ export class SidenavComponent {
       number: '3',
       name: 'Medical Bills',
       icon: 'fa-solid fa-money-bill-1',
-      link: '/bills'
+      link: '/accounts'
     },
     {
       number: '4',

@@ -1,0 +1,206 @@
+<div class="container-fluid g-0">
+    <app-header (sideNavToogled)="sideNavStatus = $event;"></app-header>
+  
+    <main>
+      <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}"></app-sidenav>
+  
+      <div class="display-area p-3" [ngClass]="{'display-area-shrink': sideNavStatus}">
+        <div class="container-fluid g-0">
+            <div class="modal-body">
+                <form method="post" action="register.php" enctype='multipart/form-data' id="submit-form">
+                    <p style="text-align: -webkit-auto;">
+                        <span
+                            style="color: rgb(60, 58, 64); font-family: 'Palatino Linotype', serif; line-height: 19px; font-size: 18px;">
+                            &nbsp;<span lang="EN-GB" style="line-height: 107%;">
+                                <tr class="text1">
+                                    <td>
+                                        <div>
+                                            How many types of medicine do you want to prescribe?
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <select style='width:100px;' class="open-1" id="medscount">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option class="10">10</option>
+                    
+                                        </select>
+                                    </td>
+                                </tr>
+                                
+                                
+                                
+                            </span></span>
+            
+                            <tr >
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Medicine</span>
+                                        <select class="form-select" aria-label="Select Gender" name="medicines">
+                              
+                                            <option selected value="paracetalmol" >Paracetamol (500mg) Tablet</option>
+                                            <option selected value="magnesium" >Magnesium (250mg) Tablet</option>
+                                            <option selected value="parapain" >Parapain (100mg) Tablet</option>
+                                            <option selected value="La" >La (500mg) Tablet</option>
+                                            <option selected value="buffen" >Buffen (2500mg) Tablet</option>
+                                            <option selected value="cipro" >CIPRO (500mg) Tablet</option>
+                                            <option selected value="quenin" >Quenin (250mg) Tablet</option>
+                                            <option selected value="penecilin" >Penecilin (200mg) Tablet</option>
+                                            <option selected value="bactrim" >Bactrim (200mg) Tablet</option>
+                                          </select>
+                                      </div> 
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Amount</span>
+                                        <input type="text" aria-label="Patient name" name="p_name" class="form-control">
+                                      </div> 
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Times a day</span>
+                                        <input type="text" aria-label="Patient name" name="p_name" class="form-control">
+                                      </div> 
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Duration (Days)</span>
+                                        <input type="text" aria-label="Patient name" name="p_name" class="form-control">
+                                      </div> 
+                                </td>
+                            </tr>
+            
+                            <tr >
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Medicine</span>
+                                        <select class="form-select" aria-label="Select Gender" name="medicines">
+                              
+                                            <option selected value="paracetalmol" >Paracetamol (500mg) Tablet</option>
+                                            <option selected value="magnesium" >Magnesium (250mg) Tablet</option>
+                                            <option selected value="parapain" >Parapain (100mg) Tablet</option>
+                                            <option selected value="La" >La (500mg) Tablet</option>
+                                            <option selected value="buffen" >Buffen (2500mg) Tablet</option>
+                                            <option selected value="cipro" >CIPRO (500mg) Tablet</option>
+                                            <option selected value="quenin" >Quenin (250mg) Tablet</option>
+                                            <option selected value="penecilin" >Penecilin (200mg) Tablet</option>
+                                            <option selected value="bactrim" >Bactrim (200mg) Tablet</option>
+                                          </select>
+                                      </div> 
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Amount</span>
+                                        <input type="text" aria-label="Patient name" name="p_name" class="form-control">
+                                      </div> 
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Times a day</span>
+                                        <input type="text" aria-label="Patient name" name="p_name" class="form-control">
+                                      </div> 
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Duration (Days)</span>
+                                        <input type="text" aria-label="Patient name" name="p_name" class="form-control">
+                                      </div> 
+                                </td>
+                            </tr>
+            
+                    </p>
+                    <p style="text-align: -webkit-auto;">
+            
+                        <span style="font-size: 18px;">
+                            <span style="color: rgb(60, 58, 64);">
+                                &nbsp; &nbsp; &nbsp; &nbsp;
+            
+                                <span lang="EN-GB" style="line-height: 19px; font-family: 'Palatino Linotype', serif;">&nbsp;&nbsp;
+            
+            
+            
+                                    <span class="meds"></span>
+            
+                                </span>
+                            </span></span>
+                    </p>
+            
+                    <p style="text-align: -webkit-auto;">
+                        <span
+                            style="color: rgb(60, 58, 64); font-family: 'Palatino Linotype', serif; line-height: 19px; font-size: 18px;">
+                            &nbsp;<span lang="EN-GB" style="line-height: 107%;">Do you want to add prescription comment?
+                            </span>
+                        </span>
+            
+            
+            
+                        <label class="art-checkbox">
+                            <input type="checkbox" name="" class="open-yes4">
+                            <span style="font-size: 18px;">Yes</span> &nbsp; &nbsp;
+                        </label>
+                        <label class="art-checkbox">
+                            <input type="checkbox" name="" class="open-no4">
+                            <span style="font-size: 18px;">No</span> &nbsp; &nbsp; </label>
+            
+                    </p>
+            
+                    <input class="form-control" style="width: 500px; height: 50px;" type="text" placeholder="Prescription input" aria-label="default input example">
+            
+            
+            
+                    <p style="text-align: -webkit-auto;">
+                        <span
+                            style="color: rgb(60, 58, 64); font-family: 'Palatino Linotype', serif; font-size: 18px; line-height: 16px;">
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                            <span class="schoolbackground4"></span>
+                        </span>
+                    </p>
+            
+                    <p style="text-align: -webkit-auto;">
+                        <span
+                            style="color: rgb(60, 58, 64); font-family: 'Palatino Linotype', serif; line-height: 19px; font-size: 18px;">
+                            &nbsp;<span lang="EN-GB" style="line-height: 107%;">Do you want to add management plan?
+                            </span></span>
+            
+            
+            
+                        <label class="art-checkbox">
+                            <input type="checkbox" name="" class="open-yes44">
+                            <span style="font-size: 18px;">Yes</span> &nbsp; &nbsp;
+                        </label>
+                        <label class="art-checkbox">
+                            <input type="checkbox" name="" class="open-no44">
+                            <span style="font-size: 18px;">No</span> &nbsp; &nbsp; </label>
+                    </p>
+                    <input class="form-control" style="width: 500px; height: 50px;" type="text" placeholder="Management input" aria-label="default input example">
+            
+                    <p style="text-align: -webkit-auto;">
+                        <span
+                            style="color: rgb(60, 58, 64); font-family: 'Palatino Linotype', serif; font-size: 18px; line-height: 16px;">
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                            <span class="schoolbackground44"></span>
+                        </span>
+                    </p>
+                    <input type="hidden" id='mypatientid2' name='mypatientid2' />
+                    <button type="button" class="open-transferteacher btn btn-success" ><i class="fa fa-money"></i>&nbsp;Send To Accounts</button>&nbsp;
+                </form>
+            </div>      
+                        
+          
+          </div>
+      </div>
+    </main>
+  </div>
+  
+  
+  
+  
+  
