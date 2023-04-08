@@ -57,4 +57,8 @@ export class RegistrationService {
     return this._http.get("http://localhost:9000/ehr/api/files/user/"+id)
   }
 
+  public updateStatus(id:any,file:any):Observable<any>{
+    return this._http.post("http://localhost:9000/ehr/api/files/status/"+id,file)
+  }
+
 }

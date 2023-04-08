@@ -1,7 +1,7 @@
 import { animate } from '@angular/animations';
 import { RegistrationService } from '../registration.service';
 import { Component, OnInit } from '@angular/core';
-import { data } from 'jquery';
+import { data, error } from 'jquery';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Lab } from '../Lab';
 import { File } from '../file';
@@ -25,6 +25,9 @@ export class DoctorViewDetailsComponent implements OnInit {
       { item_id: 1, item_text: 'Test 1' },
       { item_id: 2, item_text: 'Test 2' },
       { item_id: 3, item_text: 'Test 3' },
+      { item_id: 4, item_text: 'Test 4' },
+      { item_id: 5, item_text: 'Test 5' },
+      { item_id: 6, item_text: 'Test 6' },
     ];
     this.dropdownSettings = {
       singleSelection: false,
@@ -44,14 +47,21 @@ export class DoctorViewDetailsComponent implements OnInit {
         this.data.user = this.temp
         this.data.test=this.selectedItems[i]
         this.data.pdf=""
-    
+        
         this._service.createLab(this.data).subscribe(
-          data => console.log("Response recieved"),
+          data => {console.log("Response recieved");this.updateStatus()},
           error => console.log("Exception occured")
         )
 
     }
+  }
 
+  updateStatus(){
+    this.file.status ="lab"
+    this._service.updateStatus(localStorage.getItem("file"),this.file).subscribe(
+      data=>{console.log("great")},
+      error=>{console.log("error")}
+    )
   }
   
   loadData(){
@@ -60,6 +70,7 @@ export class DoctorViewDetailsComponent implements OnInit {
         this.file = data;
         console.log(data)
         console.log(this.file)
+        
       },
       error => console.log("Exception occured")
     )
