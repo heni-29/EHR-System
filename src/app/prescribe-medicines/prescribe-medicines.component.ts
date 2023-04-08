@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Pharmacy } from '../pharmacy';
+import { RegistrationService } from '../registration.service';
 
 @Component({
   selector: 'app-prescribe-medicines',
@@ -6,46 +8,42 @@ import { Component } from '@angular/core';
   styleUrls: ['./prescribe-medicines.component.css']
 })
 export class PrescribeMedicinesComponent {
+  displayStyle = "none";
   sideNavStatus: boolean = true;
-  dropdownList:any[] = [];
-  selectedItems:Array<string>=[];
-  dropdownSettings = {};
-  constructor() { 
+  pharmacy = new Pharmacy()
+  selectedItems:Array<any>=[];
+  drugs = ["abs","abc"]
+  addDrug(){
+    let value = this.pharmacy.name
+    this.selectedItems.push(value);
+    // console.log(this.selectedItems)
+  }
+  constructor(private _service : RegistrationService) { 
   }
 
-  ngOnInit() {
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Paracetamol (500mg) Tablet' },
-      { item_id: 2, item_text: 'Magnesium (250mg) Tablet' },
-      { item_id: 3, item_text: 'Parapain (100mg) Tablet' },
-      { item_id: 4, item_text: 'La (500mg) Tablet' },
-      { item_id: 5, item_text: 'Buffen (2500mg) Tablet' },
-      { item_id: 6, item_text: 'CIPRO (500mg) Tablet' },
-      { item_id: 7, item_text: 'Quenin (250mg) Tablet' },
-      { item_id: 8, item_text: 'Penecilin (200mg) Tablet' },
-      { item_id: 9, item_text: 'Bactrim (200mg) Tablet' },
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
-    
+  ngOnInit(): void {
+    this.loadData()
+  }
+  allDrugs:Array<Pharmacy>;
+  loadData(){
+    this._service.loadPharmacyData().subscribe(
+      data =>{
+        this.allDrugs = data
+        this.drugs=[]
+        for(let i=0;i<this.allDrugs.length;i++){
+          this.drugs.push(this.allDrugs[i].name)
+        }
+      },
+      error => alert("server error")
+    )
   }
 
-  onItemSelect(item: any) {
-    console.log(typeof(item.item_text));
-    this.selectedItems.push(item.item_text)
+  closePopup(){
+    this.displayStyle = "none";
   }
-  onSelectAll(items: any) {
-    console.log(items);
-    for(let i=0;i<items.length;i++){
-      this.selectedItems.push(items[i].item_text)
-    }
+
+  deleteDrug(item:any){
+    this.selectedItems = this.selectedItems.filter(obj => obj!=item)
   }
 
 

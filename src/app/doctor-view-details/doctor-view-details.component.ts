@@ -5,6 +5,7 @@ import { data, error } from 'jquery';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Lab } from '../Lab';
 import { File } from '../file';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-doctor-view-details',
@@ -20,6 +21,15 @@ export class DoctorViewDetailsComponent implements OnInit {
   constructor(private _service : RegistrationService) { 
   }
 
+  labList:Array<Lab>;
+
+  loadLab(){
+    this._service.getAllTests(localStorage.getItem("file")).subscribe(
+      data=>{this.labList=data},
+      error=>{console.log("errors")}
+    )
+
+  }
   ngOnInit() {
     this.dropdownList = [
       { item_id: 1, item_text: 'Test 1' },
@@ -39,29 +49,40 @@ export class DoctorViewDetailsComponent implements OnInit {
       allowSearchFilter: true
     };
     this.loadData()
+    this.loadLab()
   }
   data = new Lab();
   temp:any = localStorage.getItem("user")
-  createLab(){
+  async createLab(){
     for(let i=0;i<this.selectedItems.length;i++){
         this.data.user = this.temp
         this.data.test=this.selectedItems[i]
         this.data.pdf=""
-        
+        this.data.file_id = localStorage.getItem("file")
         this._service.createLab(this.data).subscribe(
           data => {console.log("Response recieved");this.updateStatus()},
           error => console.log("Exception occured")
         )
+        await delay(1000)
+        this.refresh()
 
     }
   }
 
+  refresh(){
+    window.location.replace("http://localhost:4200/view-details")
+  }
   updateStatus(){
     this.file.status ="lab"
     this._service.updateStatus(localStorage.getItem("file"),this.file).subscribe(
       data=>{console.log("great")},
       error=>{console.log("error")}
     )
+  }
+
+  ifState(){
+    if(this.file.status=="doctor1")return true;
+    return false;
   }
   
   loadData(){
@@ -85,6 +106,10 @@ export class DoctorViewDetailsComponent implements OnInit {
     for(let i=0;i<items.length;i++){
       this.selectedItems.push(items[i].item_text)
     }
+  }
+  onDeselect(items:any){
+    this.selectedItems = this.selectedItems.filter(obj=>obj!=items.item_text)
+    console.log(this.selectedItems)
   }
 
 

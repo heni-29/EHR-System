@@ -102,28 +102,53 @@
                                 </div>
                             </div>
                         </tr>
-                        <tr>
+                        <tr *ngIf="ifState()">
                             <td class="table_column1">
                                 TESTS TO BE PERFORMED
                             </td>
                         </tr>
-                        <tr class="table_row">
+                        <tr *ngIf="ifState()" class="table_row">
                             <div class="dropdown">
                                 <ng-multiselect-dropdown class="dw"
                                 [placeholder]="'Select tests'" 
                                 [settings]="dropdownSettings"
                                 [data]="dropdownList"
                                 (onSelect)="onItemSelect($event)"
-                                (onSelectAll)="onSelectAll($event)">
+                                (onSelectAll)="onSelectAll($event)"
+                                (onDeSelect)="onDeselect($event)">
                             </ng-multiselect-dropdown>
                             </div>                            
             
-                        </tr>
-                        <tr class="table_row">
+                        </tr >
+                        <tr *ngIf="ifState(); else elseBlock" class="table_row">
             
-                            <button (click)="createLab()" class="btn btn-primary">Send to Laboratory</button>
+                            <button (click)="createLab()"  class="btn btn-primary">Send to Laboratory</button>
             
                         </tr>
+                        <ng-template #elseBlock>
+                            <table class="table">
+                                <tr>
+                                    <td class="table_column1">
+                                        Suggested Tests
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="table" >
+                                <tbody>
+                                    <tr *ngFor="let data of labList; let i = index">
+                                        <td>{{data.test}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <tr class="table_row">
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <h1> Submitted to Laboratory </h1>
+                                                
+                            </tr>
+                        </ng-template>
             
                     </table>
             

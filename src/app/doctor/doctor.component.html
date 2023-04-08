@@ -24,7 +24,7 @@
                 <td>{{data.name}}</td>
                 <td>{{data.status}}</td>
                 <td><button (click)="viewFile(data.id)" routerLink="/view-details" class="btn btn-primary">View</button></td>
-                <td><i routerLink="/prescribe-medicines" class="fa-solid fa-pen-to-square"></i></td>
+                <td><i (click)="viewFile(data.id)" routerLink="/prescribe-medicines" class="fa-solid fa-pen-to-square"></i></td>
             </tr>
               
             </tbody>
