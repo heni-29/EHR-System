@@ -41,74 +41,33 @@
                             </span></span>
             
                             <tr >
-                                <td>
+                                <td style="width: 350px;">
                                     <div class="input-group">
                                         <span class="input-group-text">Medicine</span>
-                                        <select class="form-select" aria-label="Select Gender" name="medicines">
-                              
-                                            <option selected value="paracetalmol" >Paracetamol (500mg) Tablet</option>
-                                            <option selected value="magnesium" >Magnesium (250mg) Tablet</option>
-                                            <option selected value="parapain" >Parapain (100mg) Tablet</option>
-                                            <option selected value="La" >La (500mg) Tablet</option>
-                                            <option selected value="buffen" >Buffen (2500mg) Tablet</option>
-                                            <option selected value="cipro" >CIPRO (500mg) Tablet</option>
-                                            <option selected value="quenin" >Quenin (250mg) Tablet</option>
-                                            <option selected value="penecilin" >Penecilin (200mg) Tablet</option>
-                                            <option selected value="bactrim" >Bactrim (200mg) Tablet</option>
-                                          </select>
+                                        <div class="dropdown" style="width: 70%; padding-left: 5px;">
+                                            <ng-multiselect-dropdown class="dw"
+                                            [placeholder]="'Select medicines'" 
+                                            [settings]="dropdownSettings"
+                                            [data]="dropdownList"
+                                            (onSelect)="onItemSelect($event)"
+                                            (onSelectAll)="onSelectAll($event)">
+                                        </ng-multiselect-dropdown>
+                                        </div> 
                                       </div> 
                                 </td>
-                                <td>
+                                <td style="width: 200px;">
                                     <div class="input-group">
                                         <span class="input-group-text">Amount</span>
                                         <input type="text" aria-label="Patient name" name="p_name" class="form-control">
                                       </div> 
                                 </td>
-                                <td>
+                                <td style="width: 250px;">
                                     <div class="input-group">
                                         <span class="input-group-text">Times a day</span>
                                         <input type="text" aria-label="Patient name" name="p_name" class="form-control">
                                       </div> 
                                 </td>
-                                <td>
-                                    <div class="input-group">
-                                        <span class="input-group-text">Duration (Days)</span>
-                                        <input type="text" aria-label="Patient name" name="p_name" class="form-control">
-                                      </div> 
-                                </td>
-                            </tr>
-            
-                            <tr >
-                                <td>
-                                    <div class="input-group">
-                                        <span class="input-group-text">Medicine</span>
-                                        <select class="form-select" aria-label="Select Gender" name="medicines">
-                              
-                                            <option selected value="paracetalmol" >Paracetamol (500mg) Tablet</option>
-                                            <option selected value="magnesium" >Magnesium (250mg) Tablet</option>
-                                            <option selected value="parapain" >Parapain (100mg) Tablet</option>
-                                            <option selected value="La" >La (500mg) Tablet</option>
-                                            <option selected value="buffen" >Buffen (2500mg) Tablet</option>
-                                            <option selected value="cipro" >CIPRO (500mg) Tablet</option>
-                                            <option selected value="quenin" >Quenin (250mg) Tablet</option>
-                                            <option selected value="penecilin" >Penecilin (200mg) Tablet</option>
-                                            <option selected value="bactrim" >Bactrim (200mg) Tablet</option>
-                                          </select>
-                                      </div> 
-                                </td>
-                                <td>
-                                    <div class="input-group">
-                                        <span class="input-group-text">Amount</span>
-                                        <input type="text" aria-label="Patient name" name="p_name" class="form-control">
-                                      </div> 
-                                </td>
-                                <td>
-                                    <div class="input-group">
-                                        <span class="input-group-text">Times a day</span>
-                                        <input type="text" aria-label="Patient name" name="p_name" class="form-control">
-                                      </div> 
-                                </td>
-                                <td>
+                                <td style="width: 270px;">
                                     <div class="input-group">
                                         <span class="input-group-text">Duration (Days)</span>
                                         <input type="text" aria-label="Patient name" name="p_name" class="form-control">
