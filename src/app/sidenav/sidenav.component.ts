@@ -28,9 +28,9 @@ export class SidenavComponent {
     },
     {
       number: '4',
-      name: 'Medical Reports',
+      name: 'Laboratory',
       icon: 'fa-solid fa-file-pdf',
-      link: '/reports'
+      link: '/laboratory'
     },
     {
       number: '5',
