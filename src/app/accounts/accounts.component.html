@@ -12,13 +12,12 @@
         <table class="table MyTable" id="acc_table">
           <thead>
             <tr>
-              <th scope="col">S.No.</th>
-              <th scope="col">Name</th>
+              <th scope="col">File Id</th>
+              <th scope="col">Doctor Name</th>
               <th scope="col">Date</th>
               <th scope="col">Amount</th>
               <th scope="col">status</th>
               <th scope="col">Action</th>
-              <th scope="col">Receipt</th>
             </tr>
           </thead>
 
@@ -41,19 +40,16 @@
           </tbody>-->
         <tbody>
             <tr *ngFor="let data of accList; let i = index">
-              <td>{{i+1}}</td>
-              <td>{{data.name}}</td>
+              <td>{{data.file_id}}</td>
+              <td>{{data.user_id}}</td>
               <td>{{data.billingDate*1000 | date}}</td>
               <td>{{data.cost}}</td>
               <td>{{data.status}}</td>
-              <td *ngIf="unpaid(data.status);else elseBlock"><button (click)="updateStatus(i+1)"
+              <td *ngIf="unpaid(data.status);else elseBlock"><button (click)="updateStatus(data.id)"
                   class="btn btn-primary">Confirm Payment</button></td>
               <ng-template #elseBlock>
                 <td>Closed</td>
               </ng-template>
-              <td><button routerLink='/receipt' class = "btn btn-outline-success"><span class="material-symbols-outlined">
-                View
-                </span></button></td>
             </tr>
           </tbody> 
         </table>

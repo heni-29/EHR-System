@@ -5,6 +5,8 @@ import { User } from './user';
 import { File } from './file';
 import { Pharmacy } from './pharmacy';
 import { Lab } from './Lab';
+import { BaseData } from './basedata';
+import { Account } from './account';
 
 @Injectable({
   providedIn: 'root'
@@ -65,4 +67,19 @@ export class RegistrationService {
     return this._http.get("http://localhost:9000/ehr/api/records/file/"+id)
   }
 
+  public updateRecords(id:any,datas:BaseData):Observable<any>{
+      return this._http.put("http://localhost:9000/ehr/api/records/"+id,datas)
+  }
+
+  public getAllRecords():Observable<any>{
+    return this._http.get("http://localhost:9000/ehr/api/records")
+  }
+
+  public addAccounts(data:Account):Observable<any>{
+    return this._http.post("http://localhost:9000/ehr/api/accounts",data)
+  }
+
+  public getRecordsById(id:any):Observable<any>{
+    return this._http.get("http://localhost:9000/ehr/api/records/file/"+id)
+  }
 }

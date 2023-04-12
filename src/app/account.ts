@@ -5,7 +5,7 @@ export class Account {
     file_id:string;
     billingDate:any;
     name:string;
-    
+    id:any
     constructor(){}
 
 

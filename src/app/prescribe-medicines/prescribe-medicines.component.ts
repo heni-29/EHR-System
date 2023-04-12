@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Pharmacy } from '../pharmacy';
 import { RegistrationService } from '../registration.service';
+import { Account } from '../account';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-prescribe-medicines',
@@ -38,6 +40,22 @@ export class PrescribeMedicinesComponent {
     )
   }
 
+  account = new Account()
+  temp:any;
+  sendToAccounts(){
+    this.temp=localStorage.getItem("file");
+    this.account.file_id = this.temp;
+    this.account.cost=  Math.floor(Math.random() * (5000 - 100) + 100).toString()
+    this.account.status="unpaid"
+    this.temp=localStorage.getItem("user")
+    this.account.user_id=this.temp
+
+    this._service.addAccounts(this.account).subscribe(
+      data => {console.log("success")}
+    )
+
+
+  }
   closePopup(){
     this.displayStyle = "none";
   }

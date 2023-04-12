@@ -9,6 +9,7 @@ import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { PrescribeMedicinesComponent } from './prescribe-medicines/prescribe-medicines.component';
 import { ReceiptComponent } from './receipt/receipt.component';
 import { LaboratoryComponent } from './laboratory/laboratory.component';
+import { ViewLabComponent } from './view-lab/view-lab.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'view-details', component: DoctorViewDetailsComponent},
   {path:'prescribe-medicines', component: PrescribeMedicinesComponent},
   {path:'receipt', component: ReceiptComponent},
-  {path:'laboratory', component: LaboratoryComponent}
+  {path:'laboratory', component: LaboratoryComponent},
+  {path:'reports', component: ViewLabComponent}
 
 ];
 

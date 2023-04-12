@@ -3,37 +3,47 @@
   
     <main>
       <app-sidenav [sideNavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}"></app-sidenav>
+  
       <div class="display-area p-3" [ngClass]="{'display-area-shrink': sideNavStatus}">
         <div class="container-fluid g-0">
-          <h1>Lab</h1>
+          <form class="form-floating">
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" name="temp" [(ngModel)]="file_val" placeholder="File Id" aria-label="Medicine name" >
+              </div>
+              <div class="col">
+                <button type="submit" (click)="loadData()" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
           <table class="table MyTable">
               <thead>
                 <tr>
                   <th scope="col">S.No.</th>
                   <th scope="col">File Id</th>
-                  <th scope="col">Doctor Name</th>
-                  <th scope="col">Report Name</th>
-                  <th>Upload reports</th>
+                  <th scope="col">Patient Name</th>
+                  <th scope="col">Test</th>
+                  <th>Open File</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let data of dataList; let i = index">
-                  <td>{{i}}</td>
+                  <td>{{i+1}}</td>
                   <td>{{data.file_id}}</td>
                   <td>{{data.user}}</td>
                   <td>{{data.test}}</td>
-                  <td><input type="file" class="file-upload" (change)="this.UploadData($event,data.id)">  </td>
+                  <td><button (click)="viewFile(data.pdf)" class="btn btn-primary">View</button></td>
               </tr>
                 
               </tbody>
             </table>
           
-            <div class="modal" tabindex="-1">
+            <div class="modal" [ngStyle]="{'display':displayStyle}" tabindex="-1">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closePopup()"></button> -->
                   </div>
                   <div class="modal-body">
                     <div class="row">
