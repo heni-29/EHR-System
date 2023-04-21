@@ -17,6 +17,13 @@ export class DoctorComponent {
 
   temp:any;  
   ngOnInit(): void {
+    if(localStorage.getItem("user")==undefined){
+      window.location.replace("http://localhost:4200/login")
+    }
+    if(localStorage.getItem("role")!="doctor"){
+      alert("Access Denied")
+      window.location.replace("http://localhost:4200/home")
+    }
     this.loadData()
   }
 

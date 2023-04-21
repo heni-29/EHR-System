@@ -21,6 +21,9 @@ export class AccountsComponent {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem("user")==undefined){
+      window.location.replace("http://localhost:4200/login")
+    }
     this.loadData()
   }
 
@@ -37,7 +40,7 @@ export class AccountsComponent {
   updateStatus(id:any){
     this._service.updateAccountStatus(id).subscribe(
       data =>{
-        alert("Successfull")
+        alert("Payment Successfull")
         this.loadData();
       },
       error => alert("server error")

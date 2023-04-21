@@ -9,6 +9,7 @@ export class File {
     remarks:string;
     status:string;
     user_name:string;
+    user_id:any
     
     public constructor(init?: Partial<File>) {
         Object.assign(this, init);

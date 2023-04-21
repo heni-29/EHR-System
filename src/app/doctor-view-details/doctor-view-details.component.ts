@@ -24,13 +24,16 @@ export class DoctorViewDetailsComponent implements OnInit {
   labList:Array<Lab>;
 
   loadLab(){
-    this._service.getAllTests(localStorage.getItem("file")).subscribe(
+    this._service.getRecordsById(localStorage.getItem("file"),localStorage.getItem("user")).subscribe(
       data=>{this.labList=data},
-      error=>{console.log("errors")}
+      error=>{console.log("Server error")}
     )
 
   }
   ngOnInit() {
+    if(localStorage.getItem("user")==undefined){
+      window.location.replace("http://localhost:4200/login")
+    }
     this.dropdownList = [
       { item_id: 1, item_text: 'Test 1' },
       { item_id: 2, item_text: 'Test 2' },
@@ -55,16 +58,16 @@ export class DoctorViewDetailsComponent implements OnInit {
   temp:any = localStorage.getItem("user")
   async createLab(){
     for(let i=0;i<this.selectedItems.length;i++){
-        this.data.user = this.temp
+        this.data.user = this.file.user_id
         this.data.test=this.selectedItems[i]
         this.data.pdf=""
         this.data.file_id = localStorage.getItem("file")
         this._service.createLab(this.data).subscribe(
-          data => {console.log("Response recieved");this.updateStatus()},
+          data => {alert("Lab Request Created Successfully");this.updateStatus()},
           error => console.log("Exception occured")
         )
-        await delay(1000)
-        this.refresh()
+        // await delay(2000)
+        // this.refresh()
 
     }
   }

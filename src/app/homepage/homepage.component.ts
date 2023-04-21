@@ -12,6 +12,12 @@ export class HomepageComponent {
   sideNavStatus: boolean = true;
   constructor(private _service : RegistrationService) { 
   }
+
+  ngOnInit(): void {
+    if(localStorage.getItem("user")==undefined){
+      window.location.replace("http://localhost:4200/login")
+    }
+  }
   temp:any;
   createFile(){
     this.temp = localStorage.getItem("user")
@@ -19,8 +25,10 @@ export class HomepageComponent {
     this.file.status="doctor1"
     console.log(this.file)
     this._service.CreateFile(this.file).subscribe(
-      data => console.log("Response recieved"),
-      error => console.log("Exception occured")
+      data => {
+        alert("File Created Successfully")
+      },
+      error => alert("Server Error")
     )
   }
 }

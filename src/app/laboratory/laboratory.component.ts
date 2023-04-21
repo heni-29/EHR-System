@@ -15,6 +15,13 @@ export class LaboratoryComponent {
 
 
   ngOnInit(): void {
+    if(localStorage.getItem("user")==undefined){
+      window.location.replace("http://localhost:4200/login")
+    }
+    if(localStorage.getItem("role")!="doctor"){
+      alert("Access Denied")
+      window.location.replace("http://localhost:4200/home")
+    }
     this.loadData()
   }
 
@@ -38,22 +45,22 @@ export class LaboratoryComponent {
     var reader = new FileReader()
     reader.readAsDataURL(event.target.files[0])
     reader.onload = await function(){
-      console.log(reader.result)
+      // console.log(reader.result)
         basestr=reader.result
         // basestr=atob(basestr);
-        console.log(basestr)
+        // console.log(basestr)
     };
     await new Promise(r => setTimeout(r, 1000));
 
     
     this.ok=localStorage.getItem("user")
-    this.datas.user=this.ok;
+    // this.datas.user=this.ok;
     this.ok=localStorage.getItem("file_id")
     this.datas.file_id=this.ok
     this.datas.pdf=basestr
 
     this._service.updateRecords(id,this.datas).subscribe(
-      data=>{console.log("success");this.loadData()},
+      data=>{alert("Report Uploaded Successfully");this.loadData()},
       error=>{console.log("error")}
     )
 

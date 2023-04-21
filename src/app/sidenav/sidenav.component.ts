@@ -7,7 +7,20 @@ import { Component, Input } from '@angular/core';
 })
 export class SidenavComponent {
   @Input() sideNavStatus: boolean = false;
-  list = [
+  list=[{
+    number: '1',
+    name: 'Home',
+    icon: 'fa-solid fa-house',
+    link: '/home'
+  }]
+  ngOnInit():void{
+    if(localStorage.getItem("role")== "doctor"){
+      this.list=this.doctor_list
+    }else{
+      this.list=this.user_list;
+    }
+  }
+  user_list=[
     {
       number: '1',
       name: 'Home',
@@ -16,9 +29,29 @@ export class SidenavComponent {
     },
     {
       number: '2',
-      name: 'Appoinments',
-      icon: 'fa-solid fa-calendar-check',
-      link: '/appoinments'
+      name: 'Files',
+      icon: 'fa-solid fa-file',
+      link: '/reports'
+    },
+    {
+      number: '3',
+      name: 'Medical Bills',
+      icon: 'fa-solid fa-money-bill-1',
+      link: '/accounts'
+    }
+  ];
+  doctor_list = [
+    {
+      number: '1',
+      name: 'Home',
+      icon: 'fa-solid fa-house',
+      link: '/home'
+    },
+    {
+      number: '2',
+      name: 'Files',
+      icon: 'fa-solid fa-file',
+      link: '/reports'
     },
     {
       number: '3',

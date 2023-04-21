@@ -14,11 +14,15 @@ export class LoginComponent {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem("user")!=undefined){
+      window.location.replace("http://localhost:4200/home")
+    }
   }
   onSignup() {
+    this.user.role="random"
     this._service.SignUpUserRemote(this.user).subscribe(
-      data => console.log("Response recieved"),
-      error => console.log("Exception occured")
+      data => alert("Account Created Successfully"),
+      error => alert("User"+this.user.email+" Already exists")
     )
     this.user = {
       email:'',
@@ -35,8 +39,8 @@ export class LoginComponent {
         console.log(data)
         this.role=data
         localStorage.setItem("role",this.role.role)
-        window.location.replace("http://localhost:4200/home")      
-        
+        window.location.replace("http://localhost:4200/home")
+        // alert("Login Successfull")          
       },
       error => {
         localStorage.clear();

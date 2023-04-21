@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RegistrationService } from '../registration.service';
-import { data } from 'jquery';
+import { data, error } from 'jquery';
 import { BaseData } from '../basedata';
 
 @Component({
@@ -15,11 +15,17 @@ export class ViewLabComponent {
   constructor(private _service : RegistrationService) { 
   }
   file_val:any;
+  ngOnInit():void{
+    if(localStorage.getItem("user")==undefined){
+      window.location.replace("http://localhost:4200/login")
+    }
+  }
 
   dataList:Array<BaseData>;
   loadData(){
-    this._service.getRecordsById(this.file_val).subscribe(
-      data=>{this.dataList=data;console.log(this.dataList)}
+    this._service.getRecordsById(this.file_val,localStorage.getItem("user")).subscribe(
+      data=>{this.dataList=data;console.log(this.dataList)},
+      error=>{alert("Access Denied")}
     )
   }
 
@@ -38,6 +44,7 @@ export class ViewLabComponent {
     link.download=file.name
     link.click()
     URL.revokeObjectURL(link.href);
+    alert("File Downloaded Successfully")
 
   }
 

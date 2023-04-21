@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Pharmacy } from '../pharmacy';
 import { RegistrationService } from '../registration.service';
 import { Account } from '../account';
-import { data } from 'jquery';
+import { data, error } from 'jquery';
 
 @Component({
   selector: 'app-prescribe-medicines',
@@ -24,6 +24,9 @@ export class PrescribeMedicinesComponent {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem("user")==undefined){
+      window.location.replace("http://localhost:4200/login")
+    }
     this.loadData()
   }
   allDrugs:Array<Pharmacy>;
@@ -51,7 +54,9 @@ export class PrescribeMedicinesComponent {
     this.account.user_id=this.temp
 
     this._service.addAccounts(this.account).subscribe(
-      data => {console.log("success")}
+      data => {alert("Medicines Prescribed Successfully")},
+      error => {alert("Server Error")}
+
     )
 
 
